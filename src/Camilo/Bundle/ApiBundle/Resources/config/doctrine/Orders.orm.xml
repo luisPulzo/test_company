@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Camilo\Bundle\ApiBundle\Entity\Orders" table="orders">
+    <indexes>
+      <index name="schedule_id" columns="schedule_id"/>
+    </indexes>
+    <id name="orderId" type="integer" column="order_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="key" type="string" column="stringkey" length="32" nullable="true"/>
+    <field name="state" type="string" column="state" length="45" nullable="true"/>
+    <many-to-one field="schedule" target-entity="Sessions">
+      <join-columns>
+        <join-column name="schedule_id" referenced-column-name="session_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

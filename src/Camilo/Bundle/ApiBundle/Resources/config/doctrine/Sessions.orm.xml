@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Camilo\Bundle\ApiBundle\Entity\Sessions" table="sessions">
+    <indexes>
+      <index name="schedule_ibfk_2" columns="hall_id"/>
+      <index name="schedule_ibfk_1" columns="film_id"/>
+    </indexes>
+    <id name="sessionId" type="integer" column="session_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dateMovieStart" type="integer" column="date_movie_start" nullable="true"/>
+    <field name="dateMovieEnd" type="integer" column="date_movie_end" nullable="true"/>
+    <field name="locationInfo" type="text" column="location_info" nullable="true"/>
+    <many-to-one field="hall" target-entity="Halls">
+      <join-columns>
+        <join-column name="hall_id" referenced-column-name="hall_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="film" target-entity="Films">
+      <join-columns>
+        <join-column name="film_id" referenced-column-name="film_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
