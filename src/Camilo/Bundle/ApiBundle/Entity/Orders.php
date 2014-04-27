@@ -15,7 +15,7 @@ class Orders
     /**
      * @var string
      *
-     * @ORM\Column(name="key", type="string", length=16, nullable=true)
+     * @ORM\Column(name="key", type="string", length=32, nullable=true)
      */
     private $key;
 
